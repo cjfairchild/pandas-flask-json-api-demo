@@ -5,7 +5,19 @@ app = Flask(__name__)
 
 INIT_DATASET = "MOCK_DATA.json"
 
+
 db_df = pd.read_json(INIT_DATASET)
+
+
+@app.route("/reset", methods=['POST'])
+def reload_df():
+    global db_df
+
+    db_df = pd.read_json(INIT_DATASET)
+
+    print("Resetting.")
+
+    return "OK"
 
 
 @app.route('/read', methods=['GET'])

@@ -6,6 +6,9 @@ import time
 
 
 class TestApi(unittest.TestCase):
+    def setUp(cls) -> None:
+        requests.post('http://127.0.0.1:5000/reset', json={})
+
     def test_read_all(self):
         r = requests.get('http://127.0.0.1:5000/read', json={})
         response = json.loads(r.text)
