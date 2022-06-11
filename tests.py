@@ -69,3 +69,14 @@ class TestApi(unittest.TestCase):
 
         self.assertEqual(200, status_code)
 
+    def test_update_record(self):
+        query = {"id": 1,
+                 "first_name": "Ann"}
+
+        r = requests.post('http://127.0.0.1:5000/update', json=query)
+
+        status_code = r.status_code
+        record = json.loads(r.text)
+
+        self.assertEqual(200, status_code)
+        self.assertEqual("Ann", record['first_name']['0'])

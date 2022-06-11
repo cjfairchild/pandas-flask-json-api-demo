@@ -57,5 +57,15 @@ def delete_record():
     return "OK"
 
 
+@app.route('/update', methods=['POST'])
+def update_record():
+    print(request.json)
+    query_form = request.json
+    _id = query_form['id']
+
+    db_df.loc[db_df.id == _id, query_form.keys()] = query_form.values()
+    return db_df.loc[db_df.id == _id].to_json()
+
+
 if __name__ == '__main__':
     app.run(debug=True)
