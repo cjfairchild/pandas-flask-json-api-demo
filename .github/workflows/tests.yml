@@ -9,4 +9,6 @@ jobs:
        - name: Set up Python
          uses: actions/setup-python@v3
        - name: Run tests
-         run: python3 tests.py
+         run: |
+         python3 -m pip install -r requirements.txt
+         python3 tests.py
