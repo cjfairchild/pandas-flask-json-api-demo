@@ -140,3 +140,7 @@ class TestApi(unittest.TestCase):
 
         self.assertEqual(200, status_code)
         self.assertEqual(35, result['max'])
+
+
+if __name__ == "__main__":
+    unittest.main()
